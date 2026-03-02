@@ -1,68 +1,82 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"); */
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  body {
+    font-family: "Inter", sans-serif;
+    /* font-family: "Roboto", sans-serif; */
+    font-optical-sizing: auto;
+    font-style: normal;
+    /* font-variation-settings: "wdth" 100; */
   }
-  a:hover {
-    color: #747bff;
+}
+
+@layer components {
+  .background {
+    @apply bg-[#f7f7f7];
   }
-  button {
-    background-color: #f9f9f9;
+
+  .main-text {
+    @apply text-[#1a1a1a];
+  }
+
+  .bg-accent {
+    @apply bg-[#cc5500];
+  }
+
+  .text-accent {
+    @apply text-[#cc5500];
+  }
+
+  .logreg-form {
+    @apply p-10 rounded-2xl bg-white w-[90%] md:w-125 max-h-168.75 flex flex-col gap-3 justify-center items-center shadow relative;
+  }
+
+  .inputfield {
+    @apply rounded-xl px-6 py-4 w-full md:w-68 bg-[#d9d9d9] text-sm focus:outline-none;
+  }
+
+  .primary-button {
+    @apply text-center hover:opacity-95 transition-opacity ease-in text-white py-3 px-5 rounded-xl w-full md:w-68 text-xs md:text-sm cursor-pointer;
+  }
+
+  .text-link {
+    @apply hover:underline hover:opacity-95 transition-all ease-in;
+  }
+
+  .auth-wrapper {
+    @apply h-screen flex justify-center items-center;
+  }
+
+  .sidebar {
+    @apply w-64 p-6 h-full flex flex-col gap-6;
+  }
+
+  .main-content-wrapper {
+    @apply flex-1 p-3 h-full;
+  }
+
+  .inner-content {
+    @apply h-full rounded-xl shadow-[inset_0_4px_4px_rgba(0,0,0,0.05)];
+  }
+
+  .bg-surface {
+    @apply bg-[#eaeaea];
+  }
+
+  .sidetabs .active > div {
+    @apply text-[#cc5500];
+  }
+  .sidetabs .active > p {
+    @apply font-bold;
+  }
+
+  .sidetabs {
+    @apply flex-1;
+  }
+
+  .text-prio {
+    @apply text-[#9f2305];
   }
 }
