@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SidebarLogo from "../assets/ShopPlanr-sidebar.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRightFromBracket,
   faGear,
   faList,
+  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ openMenu, closeMenu }) => {
   const plansTabs = ["/list", "/create", "/shopplan"];
+
+  const menuRef = useRef(null);
 
   useEffect(() => {
     if (plansTabs.includes(window.location.pathname)) {
@@ -24,8 +27,38 @@ const Sidebar = () => {
         .classList.remove("active");
     }
   }, [window.location.pathname]);
+
+  useEffect(() => {
+    const windowSize = window.innerWidth;
+
+    console.log("menuRef:", menuRef);
+    if (windowSize < 768 && menuRef.current) {
+      const sideBar = menuRef.current;
+
+      if (openMenu) {
+        sideBar.classList.add("bg-white");
+        sideBar.classList.add("left-0");
+      } else {
+        sideBar.classList.remove("bg-white");
+        sideBar.classList.remove("left-0");
+      }
+    }
+  }, [openMenu]);
+
+  const handleClose = () => {
+    closeMenu(false);
+  };
+
   return (
-    <div className="sidebar">
+    <div ref={menuRef} className="sidebar">
+      <div className={`absolute -right-7 ${!openMenu && "hidden"}`}>
+        <div
+          className="text-2xl font-black text-white cursor-pointer"
+          onClick={handleClose}
+        >
+          <FontAwesomeIcon icon={faX} />
+        </div>
+      </div>
       <img src={SidebarLogo} alt="" srcset="" />
 
       <div className="sidetabs">

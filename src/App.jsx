@@ -10,7 +10,7 @@ import Settings from "./pages/Settings";
 function App() {
   return (
     <>
-      <div className="h-lvh background">
+      <div className="h-dvh w-dvw background">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />

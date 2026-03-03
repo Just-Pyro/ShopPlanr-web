@@ -23,15 +23,29 @@ const List = () => {
   return (
     <>
       <Layout>
-        <div className="relative h-full flex flex-col gap-5">
-          <div className="content-header p-6 fixed top-3">
-            <Link to="/create">
-              <button type="button" className="bg-accent primary-action-btn">
+        <div className="relative h-full flex md:block flex-col gap-5">
+          <div className="content-header p-3 md:p-6 2xl:px-72 absolute top-3 left-0 right-0">
+            <Link to="/create" className="hidden md:block">
+              <button
+                type="button"
+                className="bg-accent primary-action-btn w-40"
+              >
                 Add Plan
               </button>
             </Link>
+            <div className="title-wrapper md:hidden">
+              <p className="mb-3">Plans</p>
+              <Link to="/create">
+                <button
+                  type="button"
+                  className="bg-accent primary-action-btn w-full"
+                >
+                  Add Plan
+                </button>
+              </Link>
+            </div>
           </div>
-          <div className="content-body p-6 flex-1 flex flex-col gap-6 overflow-y-auto pt-24">
+          <div className="content-body p-3 md:p-6 2xl:px-72 flex-1 flex flex-col gap-6 overflow-y-auto pt-44 md:pt-24">
             <Item />
           </div>
         </div>
