@@ -9,8 +9,10 @@ import {
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const plansTabs = ["/list", "/create", "/shopplan"];
+
   useEffect(() => {
-    if (window.location.pathname == "/list") {
+    if (plansTabs.includes(window.location.pathname)) {
       document.querySelectorAll(".sidetabs a>div")[0].classList.add("active");
       document
         .querySelectorAll(".sidetabs a>div")[1]
@@ -49,7 +51,7 @@ const Sidebar = () => {
       </div>
 
       <Link to="/" className="hover:opacity-85 transition-all ease-in">
-        <div className="flex gap-3 text-xl px-5 py-3 text-prio">
+        <div className="flex gap-3 text-xl px-5 py-3 text-emphasis">
           <div>
             <FontAwesomeIcon icon={faArrowRightFromBracket} />
           </div>

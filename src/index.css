@@ -29,6 +29,14 @@
     @apply text-[#cc5500];
   }
 
+  .text-emphasis {
+    @apply text-[#9F2305];
+  }
+
+  .bg-emphasis {
+    @apply bg-[#9F2305];
+  }
+
   .logreg-form {
     @apply p-10 rounded-2xl bg-white w-[90%] md:w-125 max-h-168.75 flex flex-col gap-3 justify-center items-center shadow relative;
   }
@@ -76,7 +84,34 @@
     @apply flex-1;
   }
 
-  .text-prio {
-    @apply text-[#9f2305];
+  .primary-action-btn {
+    @apply rounded w-40 p-2 text-white text-sm shadow-md cursor-pointer hover:opacity-85 transition-all ease-in;
+  }
+
+  .title-wrapper {
+    @apply bg-white rounded-xl p-6 text-2xl font-bold shadow-md;
+  }
+
+  .plan-fields-wrapper {
+    @apply bg-white rounded-xl p-6 flex flex-col gap-6 shadow-md;
+  }
+
+  .items-plan-wrapper {
+    @apply px-6 2xl:px-52 pb-6 flex-1 overflow-y-auto flex flex-col gap-6 relative;
+  }
+
+  .product-item {
+    @apply bg-white p-6 rounded-xl shadow-md;
+  }
+
+  .plan-header {
+    @apply p-6 2xl:px-52 flex flex-col gap-6;
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #888;
   }
 }

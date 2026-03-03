@@ -3,12 +3,14 @@ import AuthWrapper from "./AuthWrapper";
 import Sidebar from "./Sidebar";
 import MainWrapper from "./MainWrapper";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, className = "" }) => {
   return (
     <AuthWrapper>
       <Sidebar />
       <MainWrapper>
-        <div className="inner-content bg-surface">{children}</div>
+        <div className={`inner-content bg-surface ${className}`}>
+          {children}
+        </div>
       </MainWrapper>
     </AuthWrapper>
   );
