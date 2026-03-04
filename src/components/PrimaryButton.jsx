@@ -5,16 +5,16 @@ const PrimaryButton = ({
   type = "button",
   text = "",
   className = "",
-  to = "/",
+  disabled = false,
 }) => {
   return (
-    <Link
-      to={to}
+    <button
       type={type}
       className={`bg-accent primary-button ${className}`}
+      disabled={disabled}
     >
       {text}
-    </Link>
+    </button>
   );
 };
 

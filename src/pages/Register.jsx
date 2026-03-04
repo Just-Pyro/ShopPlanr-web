@@ -1,29 +1,111 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "../components/Form";
 import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
 import RegLogLink from "../components/RegLogLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { registerUser } from "../services/ClientApi";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [input, setInput] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true);
+      const result = await registerUser(input);
+
+      if (result.success) {
+        localStorage.setItem("user", result.data);
+        toast.success(result.message);
+
+        setTimeout(() => {
+          navigate("/list");
+        }, 1500);
+      }
+    } catch (error) {
+      console.error("error", error.response?.data);
+      const message = error.response?.data?.message;
+
+      if (message) {
+        toast.error(message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="flex justify-center items-center h-full w-full">
-      <Form>
+      <form onSubmit={handleFormSubmit} className="logreg-form">
         <Link
           to="/"
           className="absolute text-accent top-7 left-7 text-lg font-extrabold"
         >
           <FontAwesomeIcon icon={faArrowLeft} />
         </Link>
-        <Input type="text" placeholder="First Name" className="mt-7" />
-        <Input type="text" placeholder="Last Name" />
-        <Input type="email" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
-        <PrimaryButton text="Register" className="mt-6" />
+        <input
+          className="inputfield placeholder:main-text main-text mt-7"
+          type="text"
+          name="first_name"
+          placeholder="First Name"
+          onInput={(e) =>
+            setInput((prev) => ({ ...prev, first_name: e.target.value }))
+          }
+          value={input.first_name}
+          required
+        />
+        <input
+          className="inputfield placeholder:main-text main-text"
+          type="text"
+          name="last_name"
+          placeholder="Last Name"
+          onInput={(e) =>
+            setInput((prev) => ({ ...prev, last_name: e.target.value }))
+          }
+          value={input.last_name}
+          required
+        />
+        <input
+          className="inputfield placeholder:main-text main-text"
+          type="email"
+          name="email"
+          placeholder="Email"
+          onInput={(e) =>
+            setInput((prev) => ({ ...prev, email: e.target.value }))
+          }
+          value={input.email}
+          required
+        />
+        <input
+          className="inputfield placeholder:main-text main-text"
+          type="password"
+          name="password"
+          placeholder="Password"
+          onInput={(e) =>
+            setInput((prev) => ({ ...prev, password: e.target.value }))
+          }
+          value={input.password}
+          required
+        />
+        <PrimaryButton
+          type="submit"
+          text={isLoading ? <div className="loader"></div> : "Register"}
+          disabled={isLoading}
+          className="mt-6"
+        />
         <RegLogLink type="register" />
-      </Form>
+      </form>
     </div>
   );
 };

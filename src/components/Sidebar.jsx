@@ -7,9 +7,10 @@ import {
   faList,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = ({ openMenu, closeMenu }) => {
+  const navigate = useNavigate();
   const plansTabs = ["/list", "/create", "/shopplan"];
 
   const menuRef = useRef(null);
@@ -49,6 +50,11 @@ const Sidebar = ({ openMenu, closeMenu }) => {
     closeMenu(false);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/");
+  };
+
   return (
     <div ref={menuRef} className="sidebar">
       <div className={`absolute -right-7 ${!openMenu && "hidden"}`}>
@@ -83,14 +89,17 @@ const Sidebar = ({ openMenu, closeMenu }) => {
         </Link>
       </div>
 
-      <Link to="/" className="hover:opacity-85 transition-all ease-in">
+      <div
+        className="hover:opacity-85 transition-all ease-in cursor-pointer"
+        onClick={handleLogout}
+      >
         <div className="flex gap-3 text-xl px-5 py-3 text-emphasis">
           <div>
             <FontAwesomeIcon icon={faArrowRightFromBracket} />
           </div>
           <p className="flex-1">Logout</p>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

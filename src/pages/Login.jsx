@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import Form from "../components/Form";
-import Input from "../components/Input";
 import PrimaryButton from "../components/PrimaryButton";
 import RegLogLink from "../components/RegLogLink";
 import FormLogo from "../assets/ShopPlanr - nobg.png";
-import axios from "axios";
+import { loginUser } from "../services/ClientApi";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     console.log("Input state updated:", input);
@@ -19,8 +21,28 @@ const Login = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Form submitted with input:", input);
-    // const response = await axios.post("")
+    try {
+      setIsLoading(true);
+      const result = await loginUser(input);
+
+      if (result?.success) {
+        localStorage.setItem("user", result.data);
+        toast.success(result.message);
+
+        setTimeout(() => {
+          navigate("/list");
+        }, 1500);
+      }
+    } catch (error) {
+      console.error("error", error.response?.data);
+      const message = error.response?.data?.message;
+
+      if (message) {
+        toast.error(message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -55,9 +77,9 @@ const Login = () => {
             required
           />
           <PrimaryButton
-            to="/list"
             type="submit"
-            text="Login"
+            text={isLoading ? <div className="loader"></div> : "Login"}
+            disabled={isLoading}
             className="mt-6"
           />
           <RegLogLink type="login" />
