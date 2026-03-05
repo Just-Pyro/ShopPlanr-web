@@ -14,10 +14,6 @@ const Login = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    console.log("Input state updated:", input);
-  }, [input]);
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,7 +22,7 @@ const Login = () => {
       const result = await loginUser(input);
 
       if (result?.success) {
-        localStorage.setItem("user", result.data);
+        localStorage.setItem("user", JSON.stringify(result.data));
         toast.success(result.message);
 
         setTimeout(() => {

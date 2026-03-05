@@ -65,7 +65,7 @@ const Sidebar = ({ openMenu, closeMenu }) => {
           <FontAwesomeIcon icon={faX} />
         </div>
       </div>
-      <img src={SidebarLogo} alt="" srcset="" />
+      <img src={SidebarLogo} alt="ShopPlanr - Logo" />
 
       <div className="sidetabs">
         <Link to="/list" className="hover:opacity-75 transition-all ease-in">

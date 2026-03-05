@@ -26,7 +26,7 @@ const Register = () => {
       const result = await registerUser(input);
 
       if (result.success) {
-        localStorage.setItem("user", result.data);
+        localStorage.setItem("user", JSON.stringify(result.data));
         toast.success(result.message);
 
         setTimeout(() => {
