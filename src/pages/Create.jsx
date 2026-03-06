@@ -53,7 +53,7 @@ const Create = () => {
 
         setTimeout(() => {
           navigate("/list");
-        }, 1500);
+        }, 300);
       }
     } catch (error) {
       console.error("error", error);

@@ -25,9 +25,11 @@ const List = () => {
 
       if (result.success) {
         setPlans(result.data);
+      } else {
+        toast.warning(result.message);
       }
     } catch (error) {
-      console.log("error", error);
+      console.error("error", error);
       const message = error.response?.data?.message;
 
       if (message) {
@@ -70,12 +72,13 @@ const List = () => {
                   const statusNames = [
                     { name: "pending", color: "maintext" },
                     { name: "in progress", color: "maintext" },
-                    { name: "completed", color: "text-green-100" },
+                    { name: "completed", color: "text-green-400" },
                     { name: "overdue", color: "text-emphasis" },
                   ];
                   return (
                     <Item
                       key={plan.id}
+                      id={plan.id}
                       total={plan.number_of_items}
                       status={statusNames[plan.status].name}
                       statusColor={statusNames[plan.status].color}
@@ -100,9 +103,9 @@ const List = () => {
   );
 };
 
-const Item = ({ total = 0, status, statusColor, address }) => {
+const Item = ({ id, total, status, statusColor, address }) => {
   return (
-    <Link to="/shopplan">
+    <Link to="/shopplan" state={{ id }}>
       <div className="plan-item bg-white rounded-xl border border-gray-50 shadow-md p-5 flex flex-col gap-6 cursor-pointer hover:scale-[102%] transition-all ease-in">
         <p className="item-title text-xl main-text">{address}</p>
         <p className="flex justify-between text-xs main-text">

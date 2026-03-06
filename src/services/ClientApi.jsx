@@ -53,3 +53,34 @@ export const createShopPlan = async ({
   });
   return response.data;
 };
+
+export const getPlanInfo = async (planId) => {
+  const route = `${baseUrl}/shop_plans/${planId}`;
+  const response = await axios.get(route);
+  return response.data;
+};
+
+export const startPlan = async (planId, userId) => {
+  const checkRoute = `${baseUrl}/shop_plans/checkStarted/${userId}`;
+  const res = await axios.get(checkRoute);
+  // console.log("res", res);
+
+  if (res.data?.success) {
+    const route = `${baseUrl}/shop_plans/start/${planId}`;
+    const response = await axios.put(route);
+    return response.data;
+  }
+
+  return res.data;
+};
+
+export const completePlan = async ({ status, updated_at, items }, planId) => {
+  const route = `${baseUrl}/shop_plans/update-status/${planId}`;
+  const response = await axios.put(route, {
+    status,
+    updated_at,
+    items,
+  });
+
+  return response.data;
+};

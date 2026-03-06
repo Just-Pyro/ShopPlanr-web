@@ -32,7 +32,6 @@ const Sidebar = ({ openMenu, closeMenu }) => {
   useEffect(() => {
     const windowSize = window.innerWidth;
 
-    console.log("menuRef:", menuRef);
     if (windowSize < 768 && menuRef.current) {
       const sideBar = menuRef.current;
 
