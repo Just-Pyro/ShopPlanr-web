@@ -96,7 +96,7 @@ const Sidebar = ({ openMenu, closeMenu }) => {
           <div>
             <FontAwesomeIcon icon={faArrowRightFromBracket} />
           </div>
-          <p className="flex-1">Logout</p>
+          <p className="flex-1">Log out</p>
         </div>
       </div>
     </div>
