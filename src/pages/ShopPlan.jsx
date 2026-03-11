@@ -15,13 +15,7 @@ const ShopPlan = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [originalBudget, setOriginalBudget] = useState(0);
-  const [planInfo, setPlanInfo] = useState({
-    address: "",
-    date_scheduled: new Date(),
-    budget: 0,
-    status: 0,
-    number_of_items: 0,
-  });
+  const [planInfo, setPlanInfo] = useState({});
   const [itemList, setItemList] = useState([
     {
       id: 0,
