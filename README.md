@@ -6,8 +6,6 @@
 
 ## 🖥️ Screenshots
 
-> **Replace the placeholders below with actual screenshots of the web app.**
-
 | Dashboard                                    | Plan Details                               | Shopping Mode                                 |
 | -------------------------------------------- | ------------------------------------------ | --------------------------------------------- |
 | ![Dashboard](./screenshots/landing-list.png) | ![Details](./screenshots/plan-details.png) | ![Shopping](./screenshots/start-shopping.png) |
@@ -28,8 +26,8 @@
 ## 🛠 Tech Stack
 
 - **Framework:** React (Vite)
-- **Styling:** CSS / Tailwind (adjust to match your actual setup)
-- **Data Source:** REST API (shared with mobile and Blade versions)
+- **Styling:** CSS / Tailwind
+- **Data Source:** REST API (shared with mobile version)
 - **Language:** JavaScript / JSX
 
 ---
@@ -68,7 +66,7 @@ Serve the Blade Version:
 php artisan serve
 ```
 
-> Please look up the Blade version for setup and installation [ShopPlanr - Blade](https://github.com/Just-Pyro/Shopplanr.git)
+> Please look up the Blade version for setup and installation [ShopPlanr - Blade](https://github.com/Jus-Pyro/Shopplanr)
 
 **4. Start the development server**
 
@@ -102,7 +100,6 @@ shopplanr-web/
 │   ├── services/     # API call functions
 │   └── main.jsx      # Entry point
 ├── public/           # Static assets
-└── .env              # Environment variables (not committed)
 ```
 
 ---
