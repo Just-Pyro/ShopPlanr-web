@@ -66,7 +66,7 @@ Serve the Blade Version:
 php artisan serve
 ```
 
-> Please look up the Blade version for setup and installation [ShopPlanr - Blade](https://github.com/Jus-Pyro/Shopplanr)
+> Please look up the Blade version for setup and installation [ShopPlanr - Blade](https://github.com/Just-Pyro/Shopplanr)
 
 **4. Start the development server**
 
