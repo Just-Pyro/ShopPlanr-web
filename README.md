@@ -106,8 +106,8 @@ shopplanr-web/
 
 ## 🔗 Related Repositories
 
-- [ShopPlanr — Expo Mobile](https://github.com/Jus-Pyro/shopplanr-expo101)
-- [ShopPlanr — Laravel Blade](https://github.com/Jus-Pyro/Shopplanr)
+- [ShopPlanr — Expo Mobile](https://github.com/Just-Pyro/shopplanr-expo101)
+- [ShopPlanr — Laravel Blade](https://github.com/Just-Pyro/Shopplanr)
 
 ---
 
